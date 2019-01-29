@@ -50,3 +50,30 @@ function Contact(firstName, lastName, phoneNumber){
 Contact.prototype.fullName = function(){
   return this.firstName + " "+ this.lastName;
 }
+
+
+
+$(document).ready(function(){
+
+  $("form#formOne").submit(function(event){
+    event.preventDefault();
+    var firstName = $("#firstName").val();
+    var lastName = $("#lastName").val();
+    var phoneNumber = $("#phoneNumber").val();
+
+    var contact = new Contact(firstName, lastName, phoneNumber);
+
+// '<li id="test">' + Object.values(contact) + "</li>"
+    console.log(Object.values(contact));
+
+    $("#info").append(`<li id="${contact.phoneNumber}">${contact.firstName} </li>`
+);
+  });
+
+  $("#info").click(function(x) {
+    console.log(x.target.id)
+    $(this).children("li")
+  });
+
+
+});
